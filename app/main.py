@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from data.interactor import Interactor as i
-from data.contacts import Contact as c
+from data.contacts import Contact as con
 import uvicorn
 
 
@@ -12,7 +12,7 @@ def get_all():
     list_of_contacts = i.get_all_contacts() # get list of objects -> we need dict
     list_of_dicts = []
     for doc in list_of_contacts:
-        list_of_dicts.append(c.into_dict(doc))
+        list_of_dicts.append(con.into_dict(doc))
     return list_of_dicts
 
 
@@ -42,3 +42,7 @@ def delete_existing_contact():
         return {"message": "deleted succesfully"}
     else:
         return {"message": "failed to delete"}
+    
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port="8000")

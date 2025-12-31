@@ -1,6 +1,6 @@
 from bson import ObjectId
 from pymongo import MongoClient
-from contacts import Contact
+from .contacts import Contact
 
 class Interactor:
     def get_connection():
